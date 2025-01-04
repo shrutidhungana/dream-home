@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 
 const TripList = () => {
   const [loading, setLoading] = useState(true);
-  const userId = useSelector((state) => state.user._id);
+  const userId = useSelector((state) => state?.user?._id);
   const tripList = useSelector((state) => state.user.tripList);
 
   const dispatch = useDispatch();
@@ -53,12 +53,12 @@ const TripList = () => {
           }) => (
                 <ListingCard
                     key={listingId?._id}
-              listingId={listingId._id}
-              creator={hostId._id}
-              listingPhotoPaths={listingId.listingPhotoPaths}
-              city={listingId.city}
-              province={listingId.province}
-              country={listingId.country}
+              listingId={listingId?._id}
+              creator={hostId?._id}
+              listingPhotoPaths={listingId?.listingPhotoPaths}
+              city={listingId?.city}
+              province={listingId?.province}
+              country={listingId?.country}
               category={listingId.category}
               startDate={startDate}
               endDate={endDate}

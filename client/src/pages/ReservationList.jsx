@@ -53,13 +53,13 @@ const ReservationList = () => {
           }) => (
                 <ListingCard
                     key={listingId?._id}
-              listingId={listingId._id}
-              creator={hostId._id}
-              listingPhotoPaths={listingId.listingPhotoPaths}
-              city={listingId.city}
-              province={listingId.province}
-              country={listingId.country}
-              category={listingId.category}
+              listingId={listingId?._id}
+              creator={hostId?._id}
+              listingPhotoPaths={listingId?.listingPhotoPaths}
+              city={listingId?.city}
+              province={listingId?.province}
+              country={listingId?.country}
+              category={listingId?.category}
               startDate={startDate}
               endDate={endDate}
               totalPrice={totalPrice}

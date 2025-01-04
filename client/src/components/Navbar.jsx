@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
 import { Search, Person, Menu } from "@mui/icons-material";
-import variables from "../styles/variables.scss";
+import styles from "../styles/variables.module.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/Navbar.scss";
@@ -33,7 +33,7 @@ const Navbar = () => {
         />
         <IconButton disabled={search === ""}>
           <Search
-            sx={{ color: variables.pinkred }}
+            sx={{ color: styles.pinkred }}
             onClick={() => {
               navigate(`/properties/search/${search}`);
             }}
@@ -56,12 +56,12 @@ const Navbar = () => {
           className="navbar_right_account"
           onClick={() => setDropdownMenu(!dropdownMenu)}
         >
-          <Menu sx={{ color: variables.darkgrey }} />
+          <Menu sx={{ color: styles.darkgrey }} />
           {!user ? (
-            <Person sx={{ color: variables.darkgrey }} />
+            <Person sx={{ color: styles.darkgrey }} />
           ) : (
             <img
-              src={`http://localhost:3001/${user.profileImagePath.replace(
+              src={`http://localhost:3001/${user.profileImagePath?.replace(
                 "public",
                 ""
               )}`}

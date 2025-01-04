@@ -68,7 +68,7 @@ const ListingDetails = () => {
       const bookingForm = {
         customerId,
         listingId,
-        hostId: listing.creator._id,
+        hostId: listing?.creator?._id,
         startDate: dateRange[0].startDate.toDateString(),
         endDate: dateRange[0].endDate.toDateString(),
         totalPrice: listing.price * dayCount,
@@ -81,6 +81,8 @@ const ListingDetails = () => {
         },
         body: JSON.stringify(bookingForm),
       });
+
+      console.log(response)
 
       if (response.ok) {
         navigate(`/${customerId}/trips`);
@@ -124,13 +126,13 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`http://localhost:3001/${listing.creator.profileImagePath.replace(
+            src={`http://localhost:3001/${listing?.creator?.profileImagePath?.replace(
               "public",
               ""
             )}`}
           />
           <h3>
-            Hosted by {listing.creator.firstName} {listing.creator.lastName}
+            Hosted by {listing?.creator?.firstName} {listing?.creator?.lastName}
           </h3>
         </div>
         <hr />
