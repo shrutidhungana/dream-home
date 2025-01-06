@@ -61,11 +61,10 @@ const Navbar = () => {
             <Person sx={{ color: styles.darkgrey }} />
           ) : (
             <img
-              src={`http://localhost:3001/${user.profileImagePath?.replace(
-                "public",
-                ""
-              )}`}
-              alt="profile photo"
+              src={`${
+                import.meta.env.VITE_API_BASE_URL
+              }/${user.profileImagePath?.replace("public", "")}`}
+              alt="profile"
               style={{ objectFit: "cover", borderRadius: "50%" }}
             />
           )}

@@ -17,7 +17,7 @@ const TripList = () => {
   const getTripList = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/users/${userId}/trips`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/${userId}/trips`,
         {
           method: "GET",
         }

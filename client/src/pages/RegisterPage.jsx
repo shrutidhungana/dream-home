@@ -42,10 +42,13 @@ const RegisterPage = () => {
         register_form.append(key, formData[key]);
       }
 
-      const response = await fetch("http://localhost:3001/auth/register", {
-        method: "POST",
-        body: register_form,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/register`,
+        {
+          method: "POST",
+          body: register_form,
+        }
+      );
 
       if (response.ok) {
         navigate("/login");

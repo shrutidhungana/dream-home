@@ -47,10 +47,12 @@ const ListingCard = ({
 
   const isLiked = wishList?.find((item) => item?._id === listingId);
 
+ 
+
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
       const response = await fetch(
-        `http://localhost:3001/users/${user?._id}/${listingId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/${user?._id}/${listingId}`,
         {
           method: "PATCH",
           header: {
@@ -80,7 +82,10 @@ const ListingCard = ({
           {listingPhotoPaths?.map((photo, index) => (
             <div key={index} className="slide">
               <img
-                src={`http://localhost:3001/${photo?.replace("public", "")}`}
+                src={`${import.meta.env.VITE_API_BASE_URL}/${photo?.replace(
+                  "public",
+                  ""
+                )}`}
                 alt={`photo ${index + 1}`}
               />
               <div

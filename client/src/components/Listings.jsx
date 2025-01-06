@@ -18,8 +18,10 @@ const Listings = () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `http://localhost:3001/properties?category=${selectedCategory}`
-          : "http://localhost:3001/properties",
+          ? `${
+              import.meta.env.VITE_API_BASE_URL
+            }/properties?category=${selectedCategory}`
+          : `${import.meta.env.VITE_API_BASE_URL}/properties`,
         {
           method: "GET",
         }

@@ -17,7 +17,7 @@ const ReservationList = () => {
   const getReservationList = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/users/${userId}/reservations`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/${userId}/reservations`,
         {
           method: "GET",
         }

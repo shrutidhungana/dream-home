@@ -20,7 +20,7 @@ const ListingDetails = () => {
   const getListingDetails = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/properties/${listingId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/properties/${listingId}`,
         {
           method: "GET",
         }
@@ -74,13 +74,16 @@ const ListingDetails = () => {
         totalPrice: listing.price * dayCount,
       };
 
-      const response = await fetch("http://localhost:3001/bookings/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingForm),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/bookings/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookingForm),
+        }
+      );
 
       console.log(response)
 
@@ -106,10 +109,13 @@ const ListingDetails = () => {
 
         <div className="photos">
           {listing.listingPhotoPaths?.map((item) => (
-              <img
-                  key={item?.id}
-              src={`http://localhost:3001/${item.replace("public", "")}`}
-              alt="listing photo"
+            <img
+              key={item?.id}
+              src={`${import.meta.env.VITE_API_BASE_URL}/${item.replace(
+                "public",
+                ""
+              )}`}
+              alt="listing"
             />
           ))}
         </div>
@@ -126,10 +132,9 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`http://localhost:3001/${listing?.creator?.profileImagePath?.replace(
-              "public",
-              ""
-            )}`}
+            src={`${
+              import.meta.env.VITE_API_BASE_URL
+            }/${listing?.creator?.profileImagePath?.replace("public", "")}`}
           />
           <h3>
             Hosted by {listing?.creator?.firstName} {listing?.creator?.lastName}
